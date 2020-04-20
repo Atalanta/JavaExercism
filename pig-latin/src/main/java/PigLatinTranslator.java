@@ -16,7 +16,7 @@ class PigLatinTranslator {
 
         var tokenisedPlainText = Arrays.asList(plaintext.split(" "));
         return tokenisedPlainText.stream()
-                .map(word -> encipherWord(word))
+                .map(this::encipherWord)
                 .collect(Collectors.joining(" "));
     }
 
