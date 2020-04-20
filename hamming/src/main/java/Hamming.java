@@ -2,8 +2,8 @@ import java.util.Objects;
 
 public class Hamming {
 
-    private String left;
-    private String right;
+    private final String left;
+    private final String right;
 
     public Hamming(String leftStrand, String rightStrand) {
         this.left = leftStrand;
@@ -17,7 +17,7 @@ public class Hamming {
             throw new IllegalArgumentException("right strand must not be empty.");
         }
 
-        if (! Objects.equals(right.length(), left.length())) {
+        if (! (right.length() == left.length())) {
             throw new IllegalArgumentException("leftStrand and rightStrand must be of equal length.");
         }
     }
@@ -28,7 +28,7 @@ public class Hamming {
             return 0;
         } else {
             for (int i = 0; i < left.length(); i++) {
-                if (Objects.equals(right.charAt(i), left.charAt(i))) {
+                if ((right.charAt(i) == left.charAt(i))) {
                     matches++;
                 }
             }
