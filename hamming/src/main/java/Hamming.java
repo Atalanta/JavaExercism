@@ -9,32 +9,24 @@ public class Hamming {
         this.left = leftStrand;
         this.right = rightStrand;
 
-        if (left.isEmpty() && ! right.isEmpty()) {
-            throw new IllegalArgumentException("left strand must not be empty.");
-        }
+        if (left.isEmpty() && !right.isEmpty()) throw new IllegalArgumentException("left strand must not be empty.");
 
-        if (right.isEmpty() && ! left.isEmpty()) {
-            throw new IllegalArgumentException("right strand must not be empty.");
-        }
+        if (right.isEmpty() && !left.isEmpty()) throw new IllegalArgumentException("right strand must not be empty.");
 
-        if (! (right.length() == left.length())) {
+        if (!(right.length() == left.length()))
             throw new IllegalArgumentException("leftStrand and rightStrand must be of equal length.");
-        }
     }
 
     public int getHammingDistance() {
-        int matches = 0;
-        if (Objects.equals(left, right)) {
-            return 0;
-        } else {
-            for (int i = 0; i < left.length(); i++) {
-                if ((right.charAt(i) == left.charAt(i))) {
-                    matches++;
-                }
-            }
+        int distance = 0;
+        if (Objects.equals(left, right)) return 0;
+        int i = 0;
+        while (i < left.length()) {
+            if ((right.charAt(i) != left.charAt(i))) distance++;
+            i++;
         }
 
-        return left.length() - matches;
+        return distance;
 
     }
 }
